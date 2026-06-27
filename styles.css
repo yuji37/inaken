@@ -18,14 +18,14 @@
 }
 
 html {
-  font-size: 1.0000rem;
+  font-size: 16px;
   transition: font-size 0.2s ease;
   scroll-behavior: smooth;
 }
 
-html.font-size-small { font-size: 0.8750rem; }
-html.font-size-medium { font-size: 1.0000rem; }
-html.font-size-large { font-size: 1.1875rem; }
+html.font-size-small { font-size: 14px; }
+html.font-size-medium { font-size: 16px; }
+html.font-size-large { font-size: 20px; }
 
 body {
   margin: 0;
@@ -1416,5 +1416,19 @@ p {
 @media (max-width: 900px) {
   .font-size-control {
     margin-right: 12px;
+  }
+}
+
+/* 追加: 配置の調整 */
+.site-nav {
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .site-nav {
+    margin-left: 0;
+  }
+  .font-size-control {
+    margin-left: auto;
   }
 }

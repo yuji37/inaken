@@ -72,3 +72,65 @@ if (form && statusEl) {
     statusEl.textContent = "メールソフトを開きました。開かない場合は電話またはメールアドレスから直接お問い合わせください。";
   });
 }
+
+// --- safeStorage オブジェクトの実装 ---
+const safeStorage = {
+  getItem(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      console.warn('LocalStorage is not accessible:', e);
+      return null;
+    }
+  },
+  setItem(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      console.warn('LocalStorage is not accessible:', e);
+    }
+  }
+};
+
+// --- 文字サイズ調整機能 ---
+function applyFontSize(size) {
+  const html = document.documentElement;
+  html.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+  html.classList.add(`font-size-${size}`);
+  
+  // ボタンの active クラスを更新
+  document.querySelectorAll('.font-size-btn').forEach(btn => {
+    if (btn.getAttribute('data-size') === size) {
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-pressed', 'false');
+    }
+  });
+}
+
+// 初期化とリスナー設定
+document.addEventListener('DOMContentLoaded', () => {
+  const savedSize = safeStorage.getItem('preferred-font-size') || 'medium';
+  applyFontSize(savedSize);
+
+  // イベントデリゲーションで文字サイズ調整ボタンを検知
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.font-size-btn');
+    if (btn) {
+      const size = btn.getAttribute('data-size');
+      if (size) {
+        applyFontSize(size);
+        safeStorage.setItem('preferred-font-size', size);
+      }
+    }
+  });
+
+  // 複数タブ・PWA同期
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'preferred-font-size' && event.newValue) {
+      applyFontSize(event.newValue);
+    }
+  });
+});

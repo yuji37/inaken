@@ -505,7 +505,10 @@ p {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.work-menu,
+.work-menu {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .flow-steps {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -1244,6 +1247,14 @@ p {
   .proof-image {
     min-height: 260px;
   }
+
+  .matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .matrix .matrix-head {
+    display: none;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1352,12 +1363,6 @@ p {
     font-size: 34px;
   }
 
-  .matrix {
-    grid-template-columns: 1fr;
-  }
-
-  .matrix .matrix-head {
-    display: none;
   }
 }
 

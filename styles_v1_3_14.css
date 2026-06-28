@@ -18,14 +18,8 @@
 }
 
 html {
-  font-size: 16px;
-  transition: font-size 0.2s ease;
   scroll-behavior: smooth;
 }
-
-html.font-size-small { font-size: 14px; }
-html.font-size-medium { font-size: 16px; }
-html.font-size-large { font-size: 20px; }
 
 body {
   margin: 0;
@@ -61,7 +55,7 @@ textarea {
   justify-content: space-between;
   gap: 24px;
   min-height: 76px;
-  padding: 14px clamp(1.1250rem, 4vw, 3.5000rem);
+  padding: 14px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid rgba(219, 226, 221, 0.72);
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(18px);
@@ -91,14 +85,14 @@ textarea {
 }
 
 .brand-name {
-  font-size: 1.1250rem;
+  font-size: 18px;
   font-weight: 800;
 }
 
 .brand-line {
   margin-top: -2px;
   color: var(--muted);
-  font-size: 0.7500rem;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -107,7 +101,7 @@ textarea {
   align-items: center;
   gap: 18px;
   color: #26352e;
-  font-size: 0.8750rem;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -205,14 +199,14 @@ textarea {
   position: relative;
   width: min(var(--max), calc(100% - 36px));
   margin: 0 auto;
-  padding: clamp(5.3750rem, 12vh, 8.2500rem) 0 clamp(2.6250rem, 7vh, 4.5000rem);
+  padding: clamp(86px, 12vh, 132px) 0 clamp(42px, 7vh, 72px);
   color: #fff;
 }
 
 .hero h1 {
   max-width: 980px;
   margin: 0;
-  font-size: clamp(2.6250rem, 6vw, 4.5000rem);
+  font-size: clamp(42px, 6vw, 72px);
   line-height: 1.08;
   font-weight: 900;
   text-shadow: 0 4px 22px rgba(0, 0, 0, 0.48);
@@ -222,7 +216,7 @@ textarea {
   max-width: 760px;
   margin: 26px 0 0;
   color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(1.1250rem, 2vw, 1.4375rem);
+  font-size: clamp(18px, 2vw, 23px);
   line-height: 1.9;
   font-weight: 700;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.48);
@@ -243,7 +237,7 @@ textarea {
   padding: 12px 20px;
   border: 1px solid transparent;
   border-radius: 5px;
-  font-size: 0.9375rem;
+  font-size: 15px;
   font-weight: 900;
   cursor: pointer;
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
@@ -274,7 +268,7 @@ textarea {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   max-width: 1040px;
-  margin: clamp(2.6250rem, 8vh, 4.7500rem) 0 0;
+  margin: clamp(42px, 8vh, 76px) 0 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -290,7 +284,7 @@ textarea {
 .hero-assurance strong {
   display: block;
   color: #f3b05f;
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 900;
 }
 
@@ -298,7 +292,7 @@ textarea {
   display: block;
   margin-top: 7px;
   color: #fff;
-  font-size: 0.9375rem;
+  font-size: 15px;
   line-height: 1.55;
   font-weight: 800;
 }
@@ -308,7 +302,7 @@ textarea {
   display: grid;
   align-items: end;
   min-height: 420px;
-  padding: clamp(5.8750rem, 12vh, 8.7500rem) max(18px, calc((100% - var(--max)) / 2)) 64px;
+  padding: clamp(94px, 12vh, 140px) max(18px, calc((100% - var(--max)) / 2)) 64px;
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(8, 31, 23, 0.58), rgba(8, 31, 23, 0.28)),
@@ -323,7 +317,7 @@ textarea {
 .page-hero h1,
 .contact h1 {
   margin: 0;
-  font-size: 3.3750rem;
+  font-size: 54px;
   line-height: 1.18;
   font-weight: 900;
   text-shadow: 0 4px 22px rgba(0, 0, 0, 0.48);
@@ -333,7 +327,7 @@ textarea {
   max-width: 760px;
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 1.1250rem;
+  font-size: 18px;
   font-weight: 700;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
@@ -341,7 +335,7 @@ textarea {
 .section {
   width: min(var(--max), calc(100% - 36px));
   margin: 0 auto;
-  padding: clamp(4.5000rem, 9vw, 7.0000rem) 0;
+  padding: clamp(72px, 9vw, 112px) 0;
 }
 
 .section-heading {
@@ -359,21 +353,21 @@ textarea {
   display: block;
   margin-bottom: 12px;
   color: var(--amber);
-  font-size: 0.7500rem;
+  font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 h2 {
   margin: 0;
-  font-size: 3.0000rem;
+  font-size: 48px;
   line-height: 1.28;
   font-weight: 900;
 }
 
 h3 {
   margin: 0;
-  font-size: 1.3125rem;
+  font-size: 21px;
   line-height: 1.45;
 }
 
@@ -388,12 +382,12 @@ p {
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.7fr);
-  gap: clamp(1.6250rem, 5vw, 4.0000rem);
+  gap: clamp(26px, 5vw, 64px);
   align-items: start;
 }
 
 .lead-panel {
-  padding: clamp(1.6250rem, 4vw, 2.8750rem);
+  padding: clamp(26px, 4vw, 46px);
   background: var(--paper);
   border: 1px solid var(--line);
   border-left: 8px solid var(--green);
@@ -402,7 +396,7 @@ p {
 
 .lead-panel p {
   margin-bottom: 0;
-  font-size: 1.0625rem;
+  font-size: 17px;
 }
 
 .scope-list,
@@ -460,7 +454,7 @@ p {
 .overview-grid strong {
   display: block;
   color: var(--green-dark);
-  font-size: 1.2500rem;
+  font-size: 20px;
   font-weight: 900;
 }
 
@@ -475,7 +469,7 @@ p {
   display: block;
   margin-top: 18px;
   color: var(--amber);
-  font-size: 0.7500rem;
+  font-size: 12px;
   font-style: normal;
   font-weight: 900;
 }
@@ -483,7 +477,7 @@ p {
 .narrative .section-heading p {
   max-width: 880px;
   margin: 20px auto 0;
-  font-size: 1.1875rem;
+  font-size: 19px;
   line-height: 1.9;
 }
 
@@ -554,7 +548,7 @@ p {
 .notice-panel strong {
   display: block;
   color: var(--green-dark);
-  font-size: 1.1250rem;
+  font-size: 18px;
   font-weight: 900;
 }
 
@@ -582,7 +576,7 @@ p {
   background: var(--green-soft);
   color: var(--green-dark);
   border-radius: 5px;
-  font-size: 0.7500rem;
+  font-size: 12px;
   font-weight: 900;
 }
 
@@ -662,7 +656,7 @@ p {
   display: block;
   padding: 18px 20px 0;
   color: var(--amber);
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 900;
 }
 
@@ -670,7 +664,7 @@ p {
   display: block;
   padding: 8px 20px 22px;
   color: var(--green-dark);
-  font-size: 1.0625rem;
+  font-size: 17px;
   line-height: 1.65;
   font-weight: 900;
 }
@@ -707,7 +701,7 @@ p {
   display: block;
   margin-bottom: 18px;
   color: var(--amber);
-  font-size: 0.7500rem;
+  font-size: 12px;
   font-weight: 900;
 }
 
@@ -733,7 +727,7 @@ p {
   max-width: none;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
-  gap: clamp(1.7500rem, 6vw, 5.2500rem);
+  gap: clamp(28px, 6vw, 84px);
   padding-right: max(18px, calc((100% - var(--max)) / 2));
   padding-left: max(18px, calc((100% - var(--max)) / 2));
   background: var(--green-dark);
@@ -759,7 +753,7 @@ p {
 .text-stack p {
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 1.0625rem;
+  font-size: 17px;
 }
 
 .split-band.light .text-stack p {
@@ -769,7 +763,7 @@ p {
 .detail-section .section-heading p {
   max-width: 780px;
   margin: 18px auto 0;
-  font-size: 1.1875rem;
+  font-size: 19px;
   line-height: 1.9;
 }
 
@@ -842,7 +836,7 @@ p {
 .service-grid h2,
 .timeline h2,
 .case-card h2 {
-  font-size: 1.3125rem;
+  font-size: 21px;
   line-height: 1.45;
 }
 
@@ -882,7 +876,7 @@ p {
   display: block;
   margin-bottom: 24px;
   color: var(--amber);
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 900;
 }
 
@@ -945,7 +939,7 @@ p {
 .cert-mark strong {
   display: block;
   color: var(--green);
-  font-size: 3.5000rem;
+  font-size: 56px;
   line-height: 1;
   font-weight: 900;
 }
@@ -954,7 +948,7 @@ p {
   display: block;
   margin-top: 14px;
   color: var(--muted);
-  font-size: 0.9375rem;
+  font-size: 15px;
   line-height: 1.6;
   font-weight: 900;
 }
@@ -993,7 +987,7 @@ p {
   display: block;
   margin-top: 18px;
   color: var(--green);
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 900;
 }
 
@@ -1002,7 +996,7 @@ p {
 }
 
 .company-main p {
-  font-size: 1.0625rem;
+  font-size: 17px;
 }
 
 .contact {
@@ -1028,7 +1022,7 @@ p {
 .phone-link {
   display: block;
   margin-top: 28px;
-  font-size: 3.3750rem;
+  font-size: 54px;
   line-height: 1.1;
   font-weight: 900;
 }
@@ -1039,7 +1033,7 @@ p {
   width: fit-content;
   margin-top: 12px;
   color: #fff;
-  font-size: clamp(1.1250rem, 2vw, 1.4375rem);
+  font-size: clamp(18px, 2vw, 23px);
   font-weight: 900;
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -1056,7 +1050,7 @@ p {
 .contact-form {
   display: grid;
   gap: 14px;
-  padding: clamp(1.3750rem, 4vw, 2.1250rem);
+  padding: clamp(22px, 4vw, 34px);
   background: #fff;
   color: var(--ink);
   border-radius: 6px;
@@ -1067,7 +1061,7 @@ p {
   display: grid;
   gap: 7px;
   color: #26352e;
-  font-size: 0.8750rem;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -1080,7 +1074,7 @@ p {
   background: #fbfcfb;
   color: var(--ink);
   padding: 12px 13px;
-  font-size: 0.9375rem;
+  font-size: 15px;
 }
 
 .contact-form textarea {
@@ -1102,7 +1096,7 @@ p {
   padding: 26px 18px;
   background: #071a13;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -1119,7 +1113,7 @@ p {
   color: #fff;
   border-radius: 50%;
   box-shadow: 0 14px 32px rgba(33, 23, 11, 0.28);
-  font-size: 0.8750rem;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -1137,7 +1131,7 @@ p {
   background: var(--green-dark);
   color: #fff;
   box-shadow: 0 14px 32px rgba(6, 29, 20, 0.32);
-  font-size: 1.5000rem;
+  font-size: 24px;
   font-weight: 900;
   line-height: 1;
   cursor: pointer;
@@ -1155,7 +1149,7 @@ p {
 @media (max-width: 1040px) {
   .site-nav {
     gap: 11px;
-    font-size: 0.8125rem;
+    font-size: 13px;
   }
 
   .service-grid,
@@ -1221,20 +1215,20 @@ p {
   }
 
   .hero h1 {
-    font-size: 3.2500rem;
+    font-size: 52px;
   }
 
   .hero p {
-    font-size: 1.1875rem;
+    font-size: 19px;
   }
 
   h2 {
-    font-size: 2.3750rem;
+    font-size: 38px;
   }
 
   .page-hero h1,
   .contact h1 {
-    font-size: 2.5000rem;
+    font-size: 40px;
   }
 
   .hero-assurance,
@@ -1279,20 +1273,20 @@ p {
   }
 
   .hero h1 {
-    font-size: 2.3125rem;
+    font-size: 37px;
   }
 
   .hero p {
-    font-size: 1.0625rem;
+    font-size: 17px;
     line-height: 1.75;
   }
 
   h2 {
-    font-size: 2.0000rem;
+    font-size: 32px;
   }
 
   .phone-link {
-    font-size: 2.1250rem;
+    font-size: 34px;
   }
 
   .button,
@@ -1366,7 +1360,7 @@ p {
 
   .page-hero h1,
   .contact h1 {
-    font-size: 2.1250rem;
+    font-size: 34px;
   }
 
   }
@@ -1383,66 +1377,65 @@ p {
 }
 
 
-/* --- font-size-control スタイル (カプセル型) --- */
-.font-size-control {
+.brand-logo {
+  display: block;
+  width: clamp(138px, 12vw, 184px);
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: grid;
+  gap: 2px;
+}
+
+.nav-link-special {
   display: inline-flex;
   align-items: center;
-  gap: 0; /* 隙間なし */
-  background: #faf8f5; /* 非常に薄いベージュ */
-  padding: 0;
-  border-radius: 30px; /* カプセル型 */
-  border: 1px solid #e2ded5;
-  overflow: hidden;
-  margin-left: 12px;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  color: var(--green-900);
+  background: var(--green-50);
+  border: 1px solid rgba(11, 104, 75, 0.18);
+  border-radius: 6px;
+  font-weight: 800;
 }
 
-.font-size-btn {
-  border: none;
-  background: transparent;
-  color: #767064; /* 少し落ち着いたカラー */
-  padding: 6px 14px;
-  cursor: pointer;
-  font-size: 0.8125rem; /* 13px */
-  font-weight: 500;
-  line-height: 1;
-  transition: all 0.15s ease;
+.site-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 11px 20px;
+  color: #fff;
+  background: linear-gradient(90deg, #0b684b, #101820);
+  font-size: 14px;
+  font-weight: 700;
 }
 
-/* ボタン間に縦の区切り線を引く */
-.font-size-btn:not(:first-child) {
-  border-left: 1px solid #e2ded5;
-  border-radius: 0;
+.site-switch strong {
+  font-size: 16px;
 }
 
-.font-size-btn:hover {
-  background: rgba(0, 0, 0, 0.03);
-  color: #2c2924;
+.site-switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  color: #0b684b;
+  background: #fff;
+  border-radius: 999px;
+  font-weight: 900;
 }
 
-/* アクティブなボタンのスタイル */
-.font-size-btn.is-active {
-  font-weight: 800; /* 太字 */
-  color: #1a1815;   /* 濃い黒 */
-  background: rgba(0, 0, 0, 0.05); /* 微妙に背景を濃くする */
-}
-
-/* モバイル対応の調整 */
-@media (max-width: 900px) {
-  .font-size-control {
-    margin-right: 12px;
+@media (max-width: 720px) {
+  .brand-logo { width: 132px; }
+  .brand-text { display: none; }
+  .site-switch {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 12px 16px;
   }
-}
-
-/* 追加: 配置の調整 */
-.site-nav {
-  margin-left: auto;
-}
-
-@media (max-width: 900px) {
-  .site-nav {
-    margin-left: 0;
-  }
-  .font-size-control {
-    margin-left: auto;
-  }
+  .site-switch a { width: 100%; justify-content: center; }
 }

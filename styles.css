@@ -105,50 +105,49 @@ textarea {
   font-weight: 800;
 }
 
-.site-nav a {
-  display: grid !important;
-  gap: 2px !important;
-  padding: 10px 0 !important;
-  text-align: center !important;
-  border-bottom: 2.5px solid transparent !important;
-  transition: color 0.2s ease, border-color 0.2s ease !important;
-  line-height: 1.2 !important;
+.site-nav a:not(.nav-link-special):not(.nav-cta) {
+  display: grid;
+  gap: 2px;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 2.5px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  line-height: 1.2;
 }
 
-.site-nav a small {
-  display: block !important;
-  color: var(--muted) !important;
-  font-size: 9px !important;
-  font-weight: 700 !important;
-  letter-spacing: .08em !important;
-  text-transform: uppercase !important;
-  margin-top: 1px !important;
-  line-height: 1 !important;
+.site-nav a:not(.nav-link-special):not(.nav-cta) small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-top: 1px;
+  line-height: 1;
 }
 
-.site-nav a.is-active,
-.site-nav a:hover {
-  color: var(--green) !important;
-  border-color: var(--amber) !important;
+.site-nav a:not(.nav-link-special):not(.nav-cta).is-active,
+.site-nav a:not(.nav-link-special):not(.nav-cta):hover {
+  color: var(--green);
+  border-color: var(--amber);
 }
 
 .nav-cta {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 38px !important;
-  padding: 0 16px !important;
-  background: var(--green) !important;
-  color: #fff !important;
-  border-radius: 5px !important;
-  border-bottom: none !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 800;
+  transition: background 0.2s ease;
 }
 
-.site-nav .nav-cta.is-active,
-.site-nav .nav-cta:hover,
-.site-nav .nav-cta:focus-visible {
-  color: #fff !important;
-  background: var(--green-dark) !important;
+.site-nav .nav-cta:hover {
+  color: #fff;
+  background: var(--green-dark);
 }
 
 .nav-toggle {
@@ -1465,27 +1464,26 @@ p {
 }
 
 .nav-link-special {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 42px !important;
-  padding: 0 16px !important;
-  color: var(--green) !important;
-  background: #fff !important;
-  border: 1.5px solid var(--green) !important;
-  border-radius: 6px !important;
-  font-weight: 800 !important;
-  font-size: 13px !important;
-  transition: all 0.2s ease !important;
-  margin-left: 12px !important;
-  text-decoration: none !important;
-  border-bottom: 1.5px solid var(--green) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  color: var(--green);
+  background: #fff;
+  border: 1.5px solid var(--green);
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+  text-decoration: none;
 }
 
 .nav-link-special:hover {
-  background: var(--green) !important;
-  color: #fff !important;
-  border-color: var(--green) !important;
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
 }
 
 .site-switch {

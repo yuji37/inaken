@@ -1446,9 +1446,9 @@ p {
   justify-content: center !important;
   min-height: 42px !important;
   padding: 0 16px !important;
-  color: var(--green-900) !important;
+  color: var(--green) !important;
   background: #fff !important;
-  border: 1.5px solid var(--green-900) !important;
+  border: 1.5px solid var(--green) !important;
   border-radius: 6px !important;
   font-weight: 800 !important;
   font-size: 13px !important;
@@ -1458,9 +1458,9 @@ p {
 }
 
 .nav-link-special:hover {
-  background: var(--green-900) !important;
+  background: var(--green) !important;
   color: #fff !important;
-  border-color: var(--green-900) !important;
+  border-color: var(--green) !important;
 }
 
 .site-switch {

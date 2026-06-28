@@ -99,32 +99,56 @@ textarea {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   color: #26352e;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .site-nav a {
-  padding: 9px 0;
+  display: grid !important;
+  gap: 2px !important;
+  padding: 10px 0 !important;
+  text-align: center !important;
+  border-bottom: 2.5px solid transparent !important;
+  transition: color 0.2s ease, border-color 0.2s ease !important;
+  line-height: 1.2 !important;
 }
 
-.site-nav a.is-active {
-  color: var(--green);
+.site-nav a small {
+  display: block !important;
+  color: var(--muted) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  margin-top: 1px !important;
+  line-height: 1 !important;
+}
+
+.site-nav a.is-active,
+.site-nav a:hover {
+  color: var(--green) !important;
+  border-color: var(--amber) !important;
 }
 
 .nav-cta {
-  padding: 10px 16px !important;
-  background: var(--green);
-  color: #fff;
-  border-radius: 5px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 38px !important;
+  padding: 0 16px !important;
+  background: var(--green) !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+  border-bottom: none !important;
 }
 
 .site-nav .nav-cta.is-active,
 .site-nav .nav-cta:hover,
 .site-nav .nav-cta:focus-visible {
-  color: #fff;
-  background: var(--green-dark);
+  color: #fff !important;
+  background: var(--green-dark) !important;
 }
 
 .nav-toggle {
@@ -1455,6 +1479,7 @@ p {
   transition: all 0.2s ease !important;
   margin-left: 12px !important;
   text-decoration: none !important;
+  border-bottom: 1.5px solid var(--green) !important;
 }
 
 .nav-link-special:hover {

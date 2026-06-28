@@ -1444,21 +1444,23 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  padding: 6px 14px;
+  min-height: 38px;
+  padding: 0 16px;
   color: var(--green-900);
-  background: transparent;
+  background: #fff;
   border: 1.5px solid var(--green-900);
   border-radius: 6px;
   font-weight: 800;
   font-size: 13px;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   margin-left: 12px;
+  text-decoration: none;
 }
 
 .nav-link-special:hover {
   background: var(--green-900);
   color: #fff;
+  border-color: var(--green-900);
 }
 
 .site-switch {

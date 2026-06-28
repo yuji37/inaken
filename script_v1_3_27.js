@@ -52,23 +52,67 @@ window.addEventListener("resize", setBackToTopState);
 if (form && statusEl) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const formData = new FormData(form);
-    const type = formData.get("type") || "相談";
-    const name = formData.get("name") || "";
-    const tel = formData.get("tel") || "";
-    const message = formData.get("message") || "";
-    const body = [
-      "有限会社稲建への相談です。",
-      "",
-      `相談種別: ${type}`,
-      `お名前・会社名: ${name}`,
-      `電話番号: ${tel}`,
-      "",
-      "相談内容:",
-      message,
-    ].join("\n");
-
-    window.location.href = `mailto:inaken@email.plala.or.jp?subject=${encodeURIComponent("解体工事の相談")}&body=${encodeURIComponent(body)}`;
-    statusEl.textContent = "メールソフトを開きました。開かない場合は電話またはメールアドレスから直接お問い合わせください。";
+    
+    // GAS API Endpoint
+    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwzjxjtelUWIwufZ2htqu9UO8124R_GNebdEAY_-SO5qppIvi3egRdHmkOMULno95T1Ww/exec";
+    
+    const submitBtn = form.querySelector("[data-submit-btn]");
+    
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "送信中...";
+    }
+    statusEl.textContent = "送信中...";
+    statusEl.style.color = "#0c4a6e"; // Deep blue
+    
+    // Execute reCAPTCHA v3
+    grecaptcha.ready(() => {
+      grecaptcha.execute('6LeDLzotAAAAAP1iaZhwhhdH1zfldN_fMGAuXQR6', {action: 'submit'}).then((token) => {
+        const formData = new FormData(form);
+        const payload = {
+          source: "inaken", // 送信元識別子
+          type: formData.get("type") || "解体相談",
+          name: formData.get("name") || "",
+          tel: formData.get("tel") || "",
+          email: formData.get("email") || "",
+          message: formData.get("message") || "",
+          recaptchaToken: token
+        };
+        
+        // Send form data asynchronously to GAS
+        fetch(GAS_API_URL, {
+          method: "POST",
+          mode: "no-cors", // Bypasses CORS issues common with GAS Web App redirects
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(() => {
+          statusEl.textContent = "送信が完了しました。ありがとうございました。";
+          statusEl.style.color = "green";
+          form.reset();
+        })
+        .catch((error) => {
+          console.error("Submission error:", error);
+          statusEl.textContent = "送信中にエラーが発生しました。お電話にてお問い合わせください。";
+          statusEl.style.color = "#c00000"; // Deep red
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "送信する";
+          }
+        });
+      }).catch((error) => {
+        console.error("reCAPTCHA execution error:", error);
+        statusEl.textContent = "セキュリティ検証に失敗しました。ページを再読み込みして再度お試しください。";
+        statusEl.style.color = "#c00000";
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "送信する";
+        }
+      });
+    });
   });
 }

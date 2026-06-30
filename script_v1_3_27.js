@@ -1,8 +1,9 @@
 const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
-const form = document.querySelector("[data-contact-form]");
-const statusEl = document.querySelector("[data-form-status]");
+let form = null;
+let statusEl = null;
+
 
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
@@ -49,73 +50,7 @@ setBackToTopState();
 window.addEventListener("scroll", setBackToTopState, { passive: true });
 window.addEventListener("resize", setBackToTopState);
 
-if (form && statusEl) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    
-    // GAS API Endpoint
-    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwzjxjtelUWIwufZ2htqu9UO8124R_GNebdEAY_-SO5qppIvi3egRdHmkOMULno95T1Ww/exec";
-    
-    const submitBtn = form.querySelector("[data-submit-btn]");
-    
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = "送信中...";
-    }
-    statusEl.textContent = "送信中...";
-    statusEl.style.color = "#0c4a6e"; // Deep blue
-    
-    // Execute reCAPTCHA v3
-    grecaptcha.ready(() => {
-      grecaptcha.execute('6LeDLzotAAAAAP1iaZhwhhdH1zfldN_fMGAuXQR6', {action: 'submit'}).then((token) => {
-        const formData = new FormData(form);
-        const payload = {
-          source: "inaken", // 送信元識別子
-          type: formData.get("type") || "解体相談",
-          name: formData.get("name") || "",
-          tel: formData.get("tel") || "",
-          email: formData.get("email") || "",
-          message: formData.get("message") || "",
-          recaptchaToken: token
-        };
-        
-        // Send form data asynchronously to GAS
-        fetch(GAS_API_URL, {
-          method: "POST",
-          mode: "no-cors", // Bypasses CORS issues common with GAS Web App redirects
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload)
-        })
-        .then(() => {
-          statusEl.textContent = "送信が完了しました。ありがとうございました。";
-          statusEl.style.color = "green";
-          form.reset();
-        })
-        .catch((error) => {
-          console.error("Submission error:", error);
-          statusEl.textContent = "送信中にエラーが発生しました。お電話にてお問い合わせください。";
-          statusEl.style.color = "#c00000"; // Deep red
-        })
-        .finally(() => {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "送信する";
-          }
-        });
-      }).catch((error) => {
-        console.error("reCAPTCHA execution error:", error);
-        statusEl.textContent = "セキュリティ検証に失敗しました。ページを再読み込みして再度お試しください。";
-        statusEl.style.color = "#c00000";
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "送信する";
-        }
-      });
-    });
-  });
-}
+
 
 // --- 3. safeStorage オブジェクトの実装 ---
 const safeStorage = {
@@ -156,6 +91,79 @@ function applyFontSize(size) {
 
 // 初期化とリスナー設定
 document.addEventListener('DOMContentLoaded', () => {
+  form = document.querySelector("[data-contact-form]");
+  statusEl = document.querySelector("[data-form-status]");
+
+  if (form && statusEl) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      
+      const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwzjxjtelUWIwufZ2htqu9UO8124R_GNebdEAY_-SO5qppIvi3egRdHmkOMULno95T1Ww/exec";
+      const submitBtn = form.querySelector("[data-submit-btn]");
+      
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "送信中...";
+      }
+      statusEl.textContent = "送信中...";
+      statusEl.style.color = "#0c4a6e";
+      
+      grecaptcha.ready(() => {
+        grecaptcha.execute('6LeDLzotAAAAAP1iaZhwhhdH1zfldN_fMGAuXQR6', {action: 'submit'}).then((token) => {
+          const formData = new FormData(form);
+          const payload = {
+            source: "inaken",
+            type: formData.get("type") || "解体相談",
+            name: formData.get("name") || "",
+            tel: formData.get("tel") || "",
+            email: formData.get("email") || "",
+            message: formData.get("message") || "",
+            recaptchaToken: token
+          };
+          
+          fetch(GAS_API_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          })
+          .then(() => {
+            statusEl.textContent = "送信が完了しました。ありがとうございました。";
+            statusEl.style.color = "green";
+            form.reset();
+            // 送信完了後にフォームプレースホルダーをリセット
+            const typeSelect = form.querySelector("select[name='type']");
+            const messageArea = form.querySelector("textarea[name='message']");
+            const nameLabelText = document.querySelector("[data-name-label-text]");
+            if (nameLabelText) nameLabelText.textContent = "お名前・会社名";
+            if (messageArea) messageArea.placeholder = "対象施設、所在地、希望時期、既存資料の有無など";
+          })
+          .catch((error) => {
+            console.error("Submission error:", error);
+            statusEl.textContent = "送信中にエラーが発生しました。お電話にてお問い合わせください。";
+            statusEl.style.color = "#c00000";
+          })
+          .finally(() => {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "送信する";
+            }
+          });
+        }).catch((error) => {
+          console.error("reCAPTCHA execution error:", error);
+          statusEl.textContent = "セキュリティ検証に失敗しました。ページを再読み込みして再度お試しください。";
+          statusEl.style.color = "#c00000";
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "送信する";
+          }
+        });
+      });
+    });
+  }
+
   const savedSize = safeStorage.getItem('preferred-font-size') || 'medium';
   applyFontSize(savedSize);
 
@@ -179,9 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 問い合わせフォームの求人対応とパラメータ検知
-  if (form) {
-    const typeSelect = form.querySelector("select[name='type']");
-    const messageArea = form.querySelector("textarea[name='message']");
+  const activeForm = document.querySelector("[data-contact-form]");
+  if (activeForm) {
+    const typeSelect = activeForm.querySelector("select[name='type']");
+    const messageArea = activeForm.querySelector("textarea[name='message']");
     const nameLabelText = document.querySelector("[data-name-label-text]");
 
     const updateFormFields = () => {

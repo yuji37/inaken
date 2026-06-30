@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Version: v1.3.34 -->
+<!-- Version: v1.3.35 -->
 <html lang="ja">
   <head>
     <meta charset="utf-8">
@@ -9,6 +9,40 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
     <link rel="stylesheet" href="styles_v1_3_27.css">
+    <style>
+      @media (min-width: 769px) {
+        .company {
+          grid-template-columns: 1fr !important;
+        }
+        .company-main {
+          margin-bottom: 2rem;
+        }
+        .company-data {
+          grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+          gap: 16px !important;
+        }
+        .company-data div.address {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 768px) {
+        .company-data {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 12px !important;
+        }
+        .company-data div.address {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 480px) {
+        .company-data {
+          grid-template-columns: 1fr !important;
+        }
+        .company-data div.address {
+          grid-column: span 1;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header" data-header>
@@ -55,10 +89,10 @@
           <div><dt>創業</dt><dd>平成11年5月15日</dd></div>
           <div><dt>法人設立</dt><dd>平成17年7月25日</dd></div>
           <div><dt>資本金</dt><dd>2500万円</dd></div>
-          <div><dt>本社所在地</dt><dd>〒300-0735 茨城県稲敷市六角262番地</dd></div>
           <div><dt>電話番号</dt><dd>0299-94-5517</dd></div>
           <div><dt>FAX番号</dt><dd>0299-94-5519</dd></div>
-          <div><dt>メールアドレス</dt><dd><img src="assets/email_address.png" alt="メールアドレス" style="vertical-align: -4px; height: 26px;"></dd></div>
+          <div class="email"><dt>メールアドレス</dt><dd><img src="assets/email_address.png" alt="メールアドレス" style="vertical-align: -4px; height: 26px;"></dd></div>
+          <div class="address"><dt>本社所在地</dt><dd>〒300-0735 茨城県稲敷市六角262番地</dd></div>
         </dl>
       </section>
 

@@ -227,6 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
             messageArea.value = "【希望職種】 建設業 施工管理（現場監督）\n\n・ご年齢：\n・これまでのご経験・資格等：\n・自己PR・ご質問等：\n";
           } else if (job === 'logistics') {
             messageArea.value = "【希望職種】 運行管理・配車スタッフ（重機回送）\n\n・ご年齢：\n・これまでのご経験・資格等：\n・自己PR・ご質問等：\n";
+          } else if (job === 'laborer') {
+            messageArea.value = "【希望職種】 解体工事 手元作業員（現場アシスタント）\n\n・ご年齢：\n・これまでのご経験・資格等：\n・自己PR・ご質問等：\n";
           } else if (job === 'recruit') {
             messageArea.value = "【希望職種】 \n\n・ご年齢：\n・これまでのご経験・資格等：\n・自己PR・ご質問等：\n";
           }

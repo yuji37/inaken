@@ -177,4 +177,50 @@ document.addEventListener('DOMContentLoaded', () => {
       applyFontSize(event.newValue);
     }
   });
+
+  // 問い合わせフォームの求人対応とパラメータ検知
+  if (form) {
+    const typeSelect = form.querySelector("select[name='type']");
+    const messageArea = form.querySelector("textarea[name='message']");
+    const nameLabelText = document.querySelector("[data-name-label-text]");
+
+    const updateFormFields = () => {
+      if (!typeSelect) return;
+      const selectedType = typeSelect.value;
+      if (selectedType === "求人への応募・採用について") {
+        if (nameLabelText) nameLabelText.textContent = "お名前";
+        if (messageArea) {
+          messageArea.placeholder = "ご希望の職種（施工管理、運行管理など）、ご年齢、これまでのご経験、その他ご質問などを記入してください。";
+        }
+      } else {
+        if (nameLabelText) nameLabelText.textContent = "お名前・会社名";
+        if (messageArea) {
+          messageArea.placeholder = "対象施設、所在地、希望時期、既存資料の有無など";
+        }
+      }
+    };
+
+    if (typeSelect) {
+      typeSelect.addEventListener("change", updateFormFields);
+
+      // URLパラメータの解析と適用
+      const urlParams = new URLSearchParams(window.location.search);
+      const job = urlParams.get('job');
+
+      if (job) {
+        // 相談種別を求人に設定
+        typeSelect.value = "求人への応募・採用について";
+        updateFormFields();
+
+        // 職種に応じたメッセージ初期値を挿入
+        if (messageArea) {
+          if (job === 'construction') {
+            messageArea.value = "【希望職種】 建設業 施工管理（現場監督）\n\n・ご年齢：\n・これまでのご経験・資格等：\n・自己PR・ご質問等：\n";
+          } else if (job === 'logistics') {
+            messageArea.value = "【希望職種】 運行管理・配車スタッフ（重機回送）\n\n・ご年齢：\n・これまでのご経験・資格等：\n・自己PR・ご質問等：\n";
+          }
+        }
+      }
+    }
+  }
 });

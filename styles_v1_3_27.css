@@ -143,12 +143,12 @@ textarea {
   align-items: center;
   justify-content: center;
   min-height: 42px;
-  padding: 0 18px;
+  padding: 8px 18px;
   background: var(--green);
   color: #fff;
   border-radius: 5px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.2;
   transition: background 0.2s ease;
 }
 

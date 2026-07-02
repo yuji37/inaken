@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
           
           fetch(GAS_API_URL, {
             method: "POST",
-            mode: "no-cors",
             headers: {
               "Content-Type": "application/json"
             },
@@ -133,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
             statusEl.textContent = "送信が完了しました。ありがとうございました。";
             statusEl.style.color = "green";
             form.reset();
+            if (submitBtn) {
+              submitBtn.style.display = "none"; // 送信成功時はボタンを非表示にして連打防止
+            }
             // 送信完了後にフォームプレースホルダーをリセット
             const typeSelect = form.querySelector("select[name='type']");
             const messageArea = form.querySelector("textarea[name='message']");
@@ -144,8 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Submission error:", error);
             statusEl.textContent = "送信中にエラーが発生しました。お電話にてお問い合わせください。";
             statusEl.style.color = "#c00000";
-          })
-          .finally(() => {
             if (submitBtn) {
               submitBtn.disabled = false;
               submitBtn.textContent = "送信する";
